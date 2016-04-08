@@ -1,0 +1,45 @@
+[
+   {
+      "id":"f7b5c41d.084a38",
+      "type":"grove-lcd",
+      "z":"b4234423.4bdcb8",
+      "name":"",
+      "x":400,
+      "y":60,
+      "wires":[
+
+      ]
+   },
+   {
+      "id":"f341d7c2.0cbe28",
+      "type":"function",
+      "z":"b4234423.4bdcb8",
+      "name":"",
+      "func":"var r_val = 0;\nvar g_val = 0;\nvar b_val = 0;\n\nif (msg.payload >= 25){\n    r_val = 255;\n    g_val = 0;\n    b_val = 0;\n}\n\nelse if (msg.payload <= 20){\n    r_val = 0;\n    g_val = 0;\n    b_val = 255;\n    \n}\nelse {\n    r_val = 0;\n    g_val = 255;\n    b_val = 0;\n    \n}\n\nmsg.payload = {\"r\":r_val, \"g\":g_val, \"b\":b_val, \"text\":String(msg.payload) + \" C\"}\nreturn msg;",
+      "outputs":1,
+      "noerr":0,
+      "x":250,
+      "y":60,
+      "wires":[
+         [
+            "f7b5c41d.084a38"
+         ]
+      ]
+   },
+   {
+      "id":"7b901765.846fe8",
+      "type":"grove_temp",
+      "z":"b4234423.4bdcb8",
+      "name":"",
+      "pin":"0",
+      "interval":"1000",
+      "x":90,
+      "y":60,
+      "wires":[
+         [
+            "f341d7c2.0cbe28"
+         ]
+      ]
+   }
+]
+		                    
